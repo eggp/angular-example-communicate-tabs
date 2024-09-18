@@ -1,1 +1,9 @@
-<app-nx-welcome></app-nx-welcome> <router-outlet></router-outlet>
+<button type="button" [routerLink]="['/', 'localstorage']">
+  Go to localstorage
+</button>
+<button type="button" [routerLink]="['/', 'broadcast']">Go to broadcast</button>
+<button type="button" [routerLink]="['/', 'postmessage']">
+  Go to postmessage
+</button>
+<hr />
+<router-outlet></router-outlet>
