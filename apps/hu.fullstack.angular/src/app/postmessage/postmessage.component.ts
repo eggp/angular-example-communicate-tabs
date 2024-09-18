@@ -29,9 +29,13 @@ export class PostmessageComponent {
       'http://localhost:4200/#/postmessage',
       '_blank'
     );
-setTimeout(()=>    this.#openedWindow?.postMessage(
-  'message',
-  this.#window?.location?.origin ?? 'default origin'
-),5000)
+    setTimeout(
+      () =>
+        this.#openedWindow?.postMessage(
+          'message',
+          this.#window?.location?.origin ?? 'default origin'
+        ),
+      5000
+    );
   }
 }
