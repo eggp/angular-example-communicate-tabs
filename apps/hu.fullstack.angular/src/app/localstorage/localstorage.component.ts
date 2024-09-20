@@ -11,8 +11,9 @@ export class LocalstorageComponent {
   readonly #window = inject(DOCUMENT).defaultView;
 
   constructor() {
+    // TODO handle ng onDestroy
     this.#window?.addEventListener('storage', (event) => {
-      if (event.storageArea === localStorage) {
+      if (event.storageArea === this.#window?.localStorage) {
         console.log('catch event: ', event);
       }
     });
@@ -23,6 +24,6 @@ export class LocalstorageComponent {
   }
 
   protected onClickSendEvent() {
-    this.#window?.localStorage.setItem('myEvent', 'event value');
+    this.#window?.localStorage.setItem('myEvent', `event value ${new Date().getTime()}`);
   }
 }

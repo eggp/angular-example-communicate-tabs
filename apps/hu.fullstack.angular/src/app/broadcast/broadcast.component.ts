@@ -17,9 +17,10 @@ export class BroadcastComponent {
   });
 
   constructor() {
-    this.#broadcast.addEventListener('message', (event) =>
-      console.log('catch broadcast event: ', event.data)
-    );
+    this.#broadcast.addEventListener('message', (event) => {
+      console.log('catch broadcast event: ', event.data);
+      // this.#window?.close()
+    });
   }
 
   protected onClickOpenNewTab() {

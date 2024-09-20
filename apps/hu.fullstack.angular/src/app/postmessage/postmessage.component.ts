@@ -12,7 +12,7 @@ export class PostmessageComponent {
   #openedWindow: WindowProxy | null | undefined;
 
   constructor() {
-    window.addEventListener(
+    this.#window?.addEventListener(
       'message',
       (event) => {
         if (event.origin == this.#window?.location?.origin) {
@@ -29,13 +29,12 @@ export class PostmessageComponent {
       'http://localhost:4200/#/postmessage',
       '_blank'
     );
-    setTimeout(
-      () =>
-        this.#openedWindow?.postMessage(
-          'message',
-          this.#window?.location?.origin ?? 'default origin'
-        ),
-      5000
-    );
+    // TODO handle popup blocker
+    setTimeout(() => {
+       this.#openedWindow?.postMessage(
+        'message',
+        this.#window?.location?.origin ?? 'default origin'
+      );
+    }, 5000);
   }
 }
